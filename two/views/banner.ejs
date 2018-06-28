@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>后台管理系统--轮播图管理</title>
+    <Link rel = 'stylesheet' href = '/bootstrap/dist/css/bootstrap.min.css' />
+    <Link rel = 'stylesheet' href = '/stylesheets/font-awesome.min.css' />
+    <Link rel = 'stylesheet' href = '/stylesheets/ionicons.min.css' />
+    <Link rel = 'stylesheet' href = '/admin-lte/dist/css/AdminLTE.min.css' />
+    <Link rel = 'stylesheet' href = '/admin-lte/dist/css/skins/skin-blue.min.css' />
+  </head>
+  </head>
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        
+   <!-- Main Header -->
+   <%- include('./heard.ejs')  %>
+   <!-- Left side column. contains the logo and sidebar -->
+   <%- include('./menu.ejs')   %>
+   <!-- Content Wrapper. Contains page content -->
+   <div class="content-wrapper">
+     <!-- Content Header (Page header) -->
+     <section class="content-header">
+       <h1>
+       轮播图管理
+       </h1>
+       <ol class="breadcrumb">
+         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+         <li class="active">Here</li>
+       </ol>
+     </section>
+ 
+     <!-- Main content -->
+     <section class="content">
+ 
+       <!-- Your Page Content Here -->
+       <div class="box">
+        <div class="box-header">
+          <a href="/addBannerRouter">
+            <button class="btn btn-md btn-success">添加轮播图</button>
+          </a>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body no-padding">
+          <table class="table table-condensed">
+            <tbody><tr>
+              <th>序号</th>
+              <th>图片id</th>
+              <th>图片图像</th>
+              <th style="width: 40px">图片网址</th>
+            </tr>
+              <% for(var i = 0; i<result.length;i++){  %> 
+            <tr >
+              <td> <%= i + 1 %> </td>
+              <td> <%= result[i].bannerid %> </td>
+              <td>
+               <img src="<%= result[i].imgurl %>"  style="height:60px;width:auto;">
+              </td>
+              <td><%= result[i].bannerurl %></td>
+            </tr>
+            <% } %> 
+          </tbody></table>
+        </div>
+        <!-- /.box-body -->
+      </div>
+     </section>
+     <!-- /.content -->
+   </div>
+   <!-- /.content-wrapper -->
+   <%- include('./sidebar.ejs')   %>
+  
+   <!-- Main Footer -->
+   <%- include('./footer.ejs')   %>
+   
+   <!-- Control Sidebar -->
+   
+   <!-- /.control-sidebar -->
+   <!-- Add the sidebar's background. This div must be placed
+        immediately after the control sidebar -->
+   <div class="control-sidebar-bg"></div>
+ </div>
+   </body>
+  <script src = "/javascripts/jquery.min.js" ></script>
+    <script src = "/bootstrap/dist/js/bootstrap.min.js" ></script>
+    <script src = "/javascripts/app.min.js" ></script>
+</html>
