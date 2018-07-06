@@ -61,13 +61,9 @@ castspaging :(req, res, next) => {
         /**
              * result = {totalNum,data: pagingdata}
              */
-            var { data, totalNum} = result;
-            res.render('casts', {
-                result: data,
-                totalNum,
-                limitNum,
-                skipNum
-            })
+            // var { data, totalNum} = result;
+            if(err) throw err
+            res.send( result )
         })     
     },  
 deleteCastRoute:(req,res,next) => {
@@ -96,6 +92,27 @@ deleteCastRoute:(req,res,next) => {
 castsadd : (req, res, next) =>{
         res.render('casts_add')
    },
+getCastDetailRoute : (req, res, next) =>{
+    var { id } = url.parse(req.url, true).query
+    async.waterfall( [
+        (cb) => {
+            MongoClient.connect(mongoUrl,(err,db)=>{
+                if( err ) throw err;
+                cb( null, db)
+            })
+        },
+        (db,cb)=>{
+            db.collection('movies').find( {id:id},{_id:0}).toArray( (err,data)=>{  
+                    if( err ) throw err;
+                    cb( null, data );
+                    db.close()
+            } );
+        }
+  ],( err, result )=>{
+        if ( err ) throw err;
+        res.send(result)
+  })  
+},
 addCastsAction: (req, res, next) =>{
        var {id, name, img, alt} = req.body;
        var insertObj = {

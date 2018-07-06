@@ -5,6 +5,8 @@ var router = express.Router();
 var movies = require('./movies.js')
 var casts = require('./casts.js')
 var directors = require('./directors.js')
+var user = require('./user.js')
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index' );
@@ -24,6 +26,14 @@ router.get('/castsadd',casts.castsadd)
 router.post('/addCastsAction',casts.addCastsAction)
 router.get('/updataCastRoute',casts.updataCastRoute)
 router.post('/updataCastsAction',casts.updataCastsAction)
+router.get('/getCastDetailRoute',casts.getCastDetailRoute)
+
+
+router.get('/user',user.defaultRoute);
+router.get('/sendCode',user.sendCode);
+router.post('/register',user.register);
+router.post('/login',user.login);
+
 
 router.get('/directors',directors.defaultRoute);
 module.exports = router;
