@@ -196,7 +196,6 @@ updataCastsAction : (req, res, next) => {
                 }
             }
         }
-        console.log( updataObj )
 async.waterfall( [
     ( cb ) => {
         MongoClient.connect( mongoUrl, ( err, db )=>{

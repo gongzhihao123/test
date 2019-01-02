@@ -75,7 +75,7 @@
             <tr>
               <th class="text-center">#</th>
               <th class="text-center">叫什么</th>
-              <th class="text-center">长得怎么样</th>
+              <!-- <th class="text-center">长得怎么样</th> -->
               <th class="text-center">操作</th>
             </tr>
           <% if ( result.length == 0 ){%>
@@ -87,7 +87,6 @@
               <tr>
               <th class="text-center"><%= i+1 %></th>
               <th class="text-center"><%= result[i].name %></th>
-              <th class="text-center"><img src="<%= result[i].avatars.small %>" style="height:60px;width:auto"></th>
               <th class="text-center">
                 <a href="/deleteCastRoute?id=<%= result[i].id %>&skipNum=<%= skipNum %>&limitNum=<%= limitNum %>"><button class="btn btn-xs btn-warning">删除</button></a> 
                 <a href="/updataCastRoute?id=<%= result[i].id %>&skipNum=<%= skipNum %>&limitNum=<%= limitNum %> "><button class="btn btn-xs btn-primary">编辑</button></a> 
